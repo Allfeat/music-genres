@@ -64,7 +64,6 @@ fn main() {
 use parity_scale_codec::{{Encode, Decode, MaxEncodedLen, DecodeWithMemTracking}};
 use scale_info::TypeInfo;
 use sp_runtime::RuntimeDebug;
-use serde::{{Serialize, Deserialize}};
 
 /// Flat enum containing all main genres and subgenres.
 /// Subgenres are grouped under genre-level comments.
@@ -82,8 +81,6 @@ use serde::{{Serialize, Deserialize}};
     DecodeWithMemTracking,
     TypeInfo,
     MaxEncodedLen,
-    Serialize,
-    Deserialize
 )]
 pub enum GenreId {{
 {variants}
