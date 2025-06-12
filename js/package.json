@@ -1,0 +1,26 @@
+{
+  "name": "@allfeat/music-genres",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "format": "prettier --write .",
+    "check-format": "prettier --check .",
+    "generate": "tsx scripts/generate.ts",
+    "version": "changeset version && pnpm install",
+    "release": "changeset publish"
+  },
+  "keywords": [],
+  "author": "Allfeat labs.",
+  "license": "GPL-3.0-or-later",
+  "packageManager": "pnpm@10.11.1",
+  "devDependencies": {
+    "@allfeat/chaintypes": "^0.3.0",
+    "@allfeat/midds": "^0.2.0",
+    "@changesets/cli": "^2.29.4",
+    "@types/node": "^24.0.1",
+    "prettier": "^3.5.3",
+    "tsx": "^4.20.2",
+    "typescript": "^5.8.3"
+  }
+}
