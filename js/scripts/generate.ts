@@ -67,6 +67,8 @@ for (const genre of rawGenres.genres) {
 const out = `// AUTO-GENERATED FILE – DO NOT EDIT MANUALLY
 // Generated from genres.json
 
+import { AllfeatMusicGenresGeneratedGenreId } from "@allfeat/chaintypes/src/allfeat-melodie2";
+
 /**
  * Type that distinguishes if a genre entry is a parent genre or a subgenre.
  */
@@ -80,7 +82,7 @@ export interface UnifiedGenreEntry {
   name: string;
   type: GenreType;
   parentId?: string;
-  toNativeType(): string;
+  toNativeType(): AllfeatMusicGenresGeneratedGenreId;
 }
 
 /**

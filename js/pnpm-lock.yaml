@@ -9,7 +9,7 @@ importers:
   .:
     devDependencies:
       '@allfeat/chaintypes':
-        specifier: ^0.3.0
+        specifier: 0.3.0
         version: 0.3.0
       '@allfeat/midds':
         specifier: ^0.2.0
