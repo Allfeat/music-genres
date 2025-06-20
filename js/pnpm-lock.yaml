@@ -9,11 +9,11 @@ importers:
   .:
     devDependencies:
       '@allfeat/chaintypes':
-        specifier: 0.3.0
-        version: 0.3.0
+        specifier: 0.6.1
+        version: 0.6.1
       '@allfeat/midds':
-        specifier: ^0.2.0
-        version: 0.2.0
+        specifier: ^0.5.1
+        version: 0.5.1
       '@changesets/cli':
         specifier: ^2.29.4
         version: 2.29.4
@@ -32,14 +32,14 @@ importers:
 
 packages:
 
-  '@allfeat/chaintypes@0.3.0':
-    resolution: {integrity: sha512-cdKKbYJA8glQ2gfoni/F0wpOj0sM3ofJrtPJMWu4PteaFZcEZdoA85owAt090tt/SfIxJABWzQ1OLL7gUBrIeA==}
+  '@allfeat/chaintypes@0.6.1':
+    resolution: {integrity: sha512-3pra7x/F9j+YxBmYg9I0xrmRrXfz0sc9bzue3Y3g+g8OdVOUNCW3BthCrxMtyTnTqpfIorE+tdGS9aPdlJqupA==}
 
-  '@allfeat/client@0.1.0':
-    resolution: {integrity: sha512-OiQ23EqppMWYd2ixeK68AACuQrXJCsnlvmmaUsymhNC2o/G58vhKrfHu4jc0Zw+O6UH+K5or2kEJmqG+ZsURVA==}
+  '@allfeat/client@0.2.1':
+    resolution: {integrity: sha512-uH6RthAYv79jgTlPr2dP0I5rgSx9fDy9TiibAewZHyhHoCiyGW0Prt3j7HAEMkiGoKLVBvOx9KzOoxEEHCKu5Q==}
 
-  '@allfeat/midds@0.2.0':
-    resolution: {integrity: sha512-O7e+gGyje3cdHi1ngubx1e8ljeQz1ZmYsadERqfFF/XRs/BiotOhITrpt/zQDEdpKMJW+vUaNjrdby55Gi/yuQ==}
+  '@allfeat/midds@0.5.1':
+    resolution: {integrity: sha512-0sg/Yitzb1xUQSVsRW1u1wpAQpBnL9LB+5YS3LJAN1mm/CTTYO7zI1xzLbqKnYJVO35YyDEvC6jrhWLyYB/dmQ==}
 
   '@babel/runtime@7.27.6':
     resolution: {integrity: sha512-vbavdySgbTTrmFE+EsiqUTzlOr5bzlnJtUv9PynGCAKvfQqjIXbvFdumPM/GxMDfyuGMJaJAU6TO4zc1Jf1i8Q==}
@@ -860,23 +860,23 @@ packages:
 
 snapshots:
 
-  '@allfeat/chaintypes@0.3.0':
+  '@allfeat/chaintypes@0.6.1':
     dependencies:
       dedot: 0.9.6
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
 
-  '@allfeat/client@0.1.0':
+  '@allfeat/client@0.2.1':
     dependencies:
       dedot: 0.9.6
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
 
-  '@allfeat/midds@0.2.0':
+  '@allfeat/midds@0.5.1':
     dependencies:
-      '@allfeat/client': 0.1.0
+      '@allfeat/client': 0.2.1
       dedot: 0.9.6
     transitivePeerDependencies:
       - bufferutil

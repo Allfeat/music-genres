@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 
-import type { AllfeatMusicGenresGeneratedGenreId } from "@allfeat/chaintypes/src/allfeat-melodie2";
+import { AllfeatMusicGenresGeneratedGenreId } from "@allfeat/chaintypes/allfeat-melodie";
 import type { INativeTypeConverter } from "@allfeat/midds";
 
 /**
@@ -67,7 +67,7 @@ for (const genre of rawGenres.genres) {
 const out = `// AUTO-GENERATED FILE – DO NOT EDIT MANUALLY
 // Generated from genres.json
 
-import { AllfeatMusicGenresGeneratedGenreId } from "@allfeat/chaintypes/src/allfeat-melodie2";
+import { AllfeatMusicGenresGeneratedGenreId } from "@allfeat/chaintypes/allfeat-melodie";
 
 /**
  * Type that distinguishes if a genre entry is a parent genre or a subgenre.

@@ -1,7 +1,7 @@
 // AUTO-GENERATED FILE – DO NOT EDIT MANUALLY
 // Generated from genres.json
 
-import { AllfeatMusicGenresGeneratedGenreId } from "@allfeat/chaintypes/src/allfeat-melodie2";
+import { AllfeatMusicGenresGeneratedGenreId } from "@allfeat/chaintypes/allfeat-melodie";
 
 /**
  * Type that distinguishes if a genre entry is a parent genre or a subgenre.
@@ -996,14 +996,14 @@ export const allGenresUnified: UnifiedGenreEntry[] = [
     type: "subgenre",
     parentId: "new_age",
     toNativeType: () => "Healing",
-  },
+  }
 ];
 
 /**
  * Retrieve the display name of a genre or subgenre by its ID.
  */
 export function getGenreName(id: string): string | null {
-  const entry = allGenresUnified.find((g) => g.id === id);
+  const entry = allGenresUnified.find(g => g.id === id);
   return entry ? entry.name : null;
 }
 
@@ -1011,19 +1011,19 @@ export function getGenreName(id: string): string | null {
  * Check if the given ID corresponds to a valid genre or subgenre.
  */
 export function isValidGenreId(id: string): boolean {
-  return allGenresUnified.some((g) => g.id === id);
+  return allGenresUnified.some(g => g.id === id);
 }
 
 /**
  * Get all subgenres of a given genre ID.
  */
 export function getSubgenresOf(parentId: string): UnifiedGenreEntry[] {
-  return allGenresUnified.filter((g) => g.parentId === parentId);
+  return allGenresUnified.filter(g => g.parentId === parentId);
 }
 
 /**
  * Get only the top-level genres (excluding subgenres).
  */
 export function getGenres(): UnifiedGenreEntry[] {
-  return allGenresUnified.filter((g) => g.type === "genre");
+  return allGenresUnified.filter(g => g.type === "genre");
 }
