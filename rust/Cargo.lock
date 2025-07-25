@@ -61,7 +61,7 @@ dependencies = [
 
 [[package]]
 name = "allfeat-music-genres"
-version = "0.2.0"
+version = "0.2.1"
 dependencies = [
  "console_error_panic_hook",
  "parity-scale-codec",
@@ -72,7 +72,6 @@ dependencies = [
  "sp-runtime",
  "wasm-bindgen",
  "wasm-bindgen-futures",
- "web-sys",
 ]
 
 [[package]]
