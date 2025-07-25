@@ -42,6 +42,9 @@
               protobuf
               openssl
               pkg-config
+              wasm-bindgen-cli
+              wasm-pack
+              binaryen
 
               # Node.js
               pnpm

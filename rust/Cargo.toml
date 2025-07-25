@@ -1,6 +1,6 @@
 [package]
 name = "allfeat-music-genres"
-version = "0.2.1"
+version = "0.2.2"
 edition = "2021"
 description = "Flat genre enum for the Allfeat blockchain with frontend-backend compatibility"
 license = "GPL-3.0-or-later"
@@ -16,6 +16,7 @@ include = ["src/**", "Cargo.toml", "README.md", "LICENSE"]
 [lib]
 name = "allfeat_music_genres"
 path = "src/lib.rs"
+crate-type = ["cdylib", "rlib"]
 
 [dependencies]
 parity-scale-codec = { version = "3.7.4", default-features = false, features = [
@@ -39,13 +40,14 @@ serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 
 [features]
-default = ["std"]
+default = ["full-std"]
 std = [
     "parity-scale-codec/std",
     "scale-info/std",
-    "sp-runtime/std"
 ]
-
+full-std = [
+  "sp-runtime/std"
+]
 js = [
   "std",
   "wasm-bindgen",
