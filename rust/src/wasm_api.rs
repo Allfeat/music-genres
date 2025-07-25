@@ -16,14 +16,15 @@
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see <https://www.gnu.org/licenses/>.
 
+use serde::{Deserialize, Serialize};
 use wasm_bindgen::prelude::*;
-use serde::{Serialize, Deserialize};
 
 #[cfg(feature = "js")]
 include!("wasm_api_generated.rs");
 
 /// Initialize WASM panic hook for better error messages
 #[wasm_bindgen(start)]
+#[cfg(feature = "standalone-js")]
 pub fn init() {
     console_error_panic_hook::set_once();
 }
@@ -163,9 +164,7 @@ impl GenreApi {
     /// Check if the given ID corresponds to a valid genre or subgenre
     #[wasm_bindgen(js_name = isValidGenreId)]
     pub fn is_valid_genre_id(&self, id: &str) -> bool {
-        get_all_genre_entries()
-            .iter()
-            .any(|entry| entry.id == id)
+        get_all_genre_entries().iter().any(|entry| entry.id == id)
     }
 
     /// Convert a GenreId enum variant to its string representation
@@ -195,7 +194,7 @@ impl GenreApi {
                     .filter(|entry| entry.parent_id.as_ref() == Some(&genre.id))
                     .cloned()
                     .collect();
-                
+
                 HierarchicalGenre {
                     id: genre.id.clone(),
                     name: genre.name.clone(),
