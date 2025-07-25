@@ -16,11 +16,13 @@ struct Genre {
 #[derive(Deserialize)]
 struct SubGenre {
     id: String,
+    name: String,
 }
 
 fn main() {
     let build_condition = env::var("BUILD_GENRES").is_ok();
     let out_file = PathBuf::from("src/generated.rs");
+    let wasm_api_file = PathBuf::from("src/wasm_api_generated.rs");
 
     if !build_condition {
         println!("cargo:warning=Skipping build.rs execution — BUILD_GENRES not set");
@@ -65,6 +67,9 @@ use parity_scale_codec::{{Encode, Decode, MaxEncodedLen, DecodeWithMemTracking}}
 use scale_info::TypeInfo;
 use sp_runtime::RuntimeDebug;
 
+#[cfg(feature = \"js\")]
+use wasm_bindgen::prelude::*;
+
 /// Flat enum containing all main genres and subgenres.
 /// Subgenres are grouped under genre-level comments.
 /// This enum is used directly in the blockchain to identify any genre type.
@@ -82,6 +87,7 @@ use sp_runtime::RuntimeDebug;
     TypeInfo,
     MaxEncodedLen,
 )]
+#[cfg_attr(feature = \"js\", wasm_bindgen)]
 pub enum GenreId {{
 {variants}
 }}",
@@ -91,9 +97,67 @@ pub enum GenreId {{
 
     fs::write(&out_file, enum_definition).expect("Failed to write generated.rs");
 
+    // Generate WASM API entries
+    generate_wasm_api(&parsed, &header, &wasm_api_file);
+
     println!("cargo:rerun-if-env-changed=BUILD_GENRES");
     println!("cargo:rerun-if-changed=../genres.json");
     println!("cargo:rerun-if-changed=HEADER");
+}
+
+fn generate_wasm_api(parsed: &GenreJson, header: &str, out_file: &PathBuf) {
+    let mut entries = vec![];
+
+    for genre in &parsed.genres {
+        // Main genre entry
+        entries.push(format!(
+            "        super::GenreEntry {{
+            id: \"{}\".to_string(),
+            name: \"{}\".to_string(),
+            genre_type: super::GenreType::Genre,
+            parent_id: None,
+            genre_id: GenreId::{},
+        }},",
+            genre.id,
+            genre.name.replace("\"", "\\\""),
+            to_camel_case(&genre.id)
+        ));
+
+        // Subgenre entries
+        for subgenre in &genre.subgenres {
+            entries.push(format!(
+                "        super::GenreEntry {{
+            id: \"{}\".to_string(),
+            name: \"{}\".to_string(),
+            genre_type: super::GenreType::Subgenre,
+            parent_id: Some(\"{}\".to_string()),
+            genre_id: GenreId::{},
+        }},",
+                subgenre.id,
+                subgenre.name.replace("\"", "\\\""),
+                genre.id,
+                to_camel_case(&subgenre.id)
+            ));
+        }
+    }
+
+    let wasm_api_content = format!(
+        "{header}
+// AUTO-GENERATED FILE. DO NOT EDIT MANUALLY.
+
+use crate::GenreId;
+
+/// Auto-generated function to get all genre entries
+pub(crate) fn get_all_genre_entries_generated() -> Vec<super::GenreEntry> {{
+    vec![
+{entries}
+    ]
+}}",
+        header = header.trim_end(),
+        entries = entries.join("\n")
+    );
+
+    fs::write(out_file, wasm_api_content).expect("Failed to write wasm_api_generated.rs");
 }
 
 fn to_camel_case(id: &str) -> String {

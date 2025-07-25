@@ -20,4 +20,10 @@
 
 mod generated;
 
+#[cfg(feature = "js")]
+mod wasm_api;
+
 pub use generated::GenreId;
+
+#[cfg(feature = "js")]
+pub use wasm_api::*;
