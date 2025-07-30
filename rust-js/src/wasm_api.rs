@@ -19,15 +19,7 @@
 use serde::{Deserialize, Serialize};
 use wasm_bindgen::prelude::*;
 
-#[cfg(feature = "js")]
 include!("wasm_api_generated.rs");
-
-/// Initialize WASM panic hook for better error messages
-#[wasm_bindgen(start)]
-#[cfg(feature = "standalone-js")]
-pub fn init() {
-    console_error_panic_hook::set_once();
-}
 
 /// Type that distinguishes if a genre entry is a parent genre or a subgenre
 #[wasm_bindgen]
@@ -45,7 +37,7 @@ pub struct GenreEntry {
     name: String,
     genre_type: GenreType,
     parent_id: Option<String>,
-    genre_id: crate::GenreId,
+    genre_id: allfeat_music_genres::GenreId,
 }
 
 /// Serde-compatible version for serialization
@@ -93,12 +85,12 @@ impl GenreEntry {
     }
 
     #[wasm_bindgen(getter, js_name = genreId)]
-    pub fn genre_id(&self) -> crate::GenreId {
+    pub fn genre_id(&self) -> allfeat_music_genres::GenreId {
         self.genre_id
     }
 
     #[wasm_bindgen(js_name = toNativeType)]
-    pub fn to_native_type(&self) -> crate::GenreId {
+    pub fn to_native_type(&self) -> allfeat_music_genres::GenreId {
         self.genre_id
     }
 }
@@ -169,7 +161,7 @@ impl GenreApi {
 
     /// Convert a GenreId enum variant to its string representation
     #[wasm_bindgen(js_name = genreIdToString)]
-    pub fn genre_id_to_string(&self, genre_id: crate::GenreId) -> String {
+    pub fn genre_id_to_string(&self, genre_id: allfeat_music_genres::GenreId) -> String {
         format!("{:?}", genre_id)
     }
 
@@ -210,13 +202,6 @@ impl GenreApi {
 }
 
 /// Internal function to get all genre entries (uses auto-generated data)
-#[cfg(feature = "js")]
 fn get_all_genre_entries() -> Vec<GenreEntry> {
     get_all_genre_entries_generated()
-}
-
-/// Fallback for when js feature is not enabled
-#[cfg(not(feature = "js"))]
-fn get_all_genre_entries() -> Vec<GenreEntry> {
-    vec![]
 }

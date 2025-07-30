@@ -17,12 +17,12 @@
 // along with this program. If not, see <https://www.gnu.org/licenses/>.
 // AUTO-GENERATED FILE. DO NOT EDIT MANUALLY.
 
-use parity_scale_codec::{Encode, Decode, MaxEncodedLen, DecodeWithMemTracking};
+use parity_scale_codec::{Decode, DecodeWithMemTracking, Encode, MaxEncodedLen};
 use scale_info::TypeInfo;
 use sp_runtime::RuntimeDebug;
 
-#[cfg(feature = "js")]
-use serde::{Serialize, Deserialize};
+#[cfg(feature = "serde")]
+use serde::{Deserialize, Serialize};
 
 #[cfg(feature = "js")]
 use wasm_bindgen::prelude::*;
@@ -33,21 +33,21 @@ use wasm_bindgen::prelude::*;
 #[derive(
     Clone,
     Copy,
+    RuntimeDebug,
     PartialEq,
     Eq,
     PartialOrd,
     Ord,
-    RuntimeDebug,
     Encode,
     Decode,
     DecodeWithMemTracking,
     TypeInfo,
     MaxEncodedLen,
 )]
-#[cfg_attr(feature = "js", derive(Serialize, Deserialize))]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "js", wasm_bindgen)]
 pub enum GenreId {
-// ===== Genre: Rock =====
+    // ===== Genre: Rock =====
     Rock,
     HardRock,
     ClassicRock,
@@ -60,7 +60,7 @@ pub enum GenreId {
     MathRock,
     Grunge,
 
-// ===== Genre: Pop =====
+    // ===== Genre: Pop =====
     Pop,
     DancePop,
     Electropop,
@@ -70,7 +70,7 @@ pub enum GenreId {
     BaroquePop,
     ArtPop,
 
-// ===== Genre: Hip Hop / Rap =====
+    // ===== Genre: Hip Hop / Rap =====
     HipHop,
     Trap,
     BoomBap,
@@ -81,7 +81,7 @@ pub enum GenreId {
     CloudRap,
     ExperimentalHipHop,
 
-// ===== Genre: Electronic =====
+    // ===== Genre: Electronic =====
     Electronic,
     House,
     Techno,
@@ -96,7 +96,7 @@ pub enum GenreId {
     Hardstyle,
     Triphop,
 
-// ===== Genre: R&B / Soul =====
+    // ===== Genre: R&B / Soul =====
     RAndB,
     ContemporaryRAndB,
     NeoSoul,
@@ -105,7 +105,7 @@ pub enum GenreId {
     QuietStorm,
     BlueEyedSoul,
 
-// ===== Genre: Jazz =====
+    // ===== Genre: Jazz =====
     Jazz,
     Bebop,
     Swing,
@@ -115,7 +115,7 @@ pub enum GenreId {
     LatinJazz,
     VocalJazz,
 
-// ===== Genre: Classical =====
+    // ===== Genre: Classical =====
     Classical,
     Baroque,
     ClassicalPeriod,
@@ -125,7 +125,7 @@ pub enum GenreId {
     ChamberMusic,
     Electroacoustic,
 
-// ===== Genre: Country =====
+    // ===== Genre: Country =====
     Country,
     Bluegrass,
     OutlawCountry,
@@ -134,7 +134,7 @@ pub enum GenreId {
     CountryPop,
     HonkyTonk,
 
-// ===== Genre: Latin =====
+    // ===== Genre: Latin =====
     Latin,
     Reggaeton,
     Salsa,
@@ -144,7 +144,7 @@ pub enum GenreId {
     Merengue,
     Tango,
 
-// ===== Genre: Reggae =====
+    // ===== Genre: Reggae =====
     Reggae,
     RootsReggae,
     Dancehall,
@@ -152,7 +152,7 @@ pub enum GenreId {
     Ska,
     Rocksteady,
 
-// ===== Genre: Metal =====
+    // ===== Genre: Metal =====
     Metal,
     HeavyMetal,
     ThrashMetal,
@@ -164,14 +164,14 @@ pub enum GenreId {
     SymphonicMetal,
     ProgressiveMetal,
 
-// ===== Genre: Folk =====
+    // ===== Genre: Folk =====
     Folk,
     FolkRock,
     TraditionalFolk,
     IndieFolk,
     ProgressiveFolk,
 
-// ===== Genre: World =====
+    // ===== Genre: World =====
     World,
     Afrobeat,
     Highlife,
@@ -182,14 +182,14 @@ pub enum GenreId {
     Gamelan,
     Fado,
 
-// ===== Genre: Soundtrack / Score =====
+    // ===== Genre: Soundtrack / Score =====
     Soundtrack,
     FilmScore,
     VideoGameMusic,
     MusicalSoundtrack,
     TelevisionScore,
 
-// ===== Genre: Experimental / Avant‑Garde =====
+    // ===== Genre: Experimental / Avant‑Garde =====
     Experimental,
     Noise,
     MusiqueConcrete,
@@ -197,36 +197,35 @@ pub enum GenreId {
     Minimalism,
     ElectroacousticExperimental,
 
-// ===== Genre: Punk =====
+    // ===== Genre: Punk =====
     Punk,
     HardcorePunk,
     PostPunk,
     SkaPunk,
     CrustPunk,
 
-// ===== Genre: Gospel / Christian =====
+    // ===== Genre: Gospel / Christian =====
     GospelChristian,
     Gospel,
     ContemporaryChristian,
     ChristianRock,
 
-// ===== Genre: Blues =====
+    // ===== Genre: Blues =====
     Blues,
     DeltaBlues,
     ElectricBlues,
     UrbanBlues,
     BluesRock,
 
-// ===== Genre: Ambient =====
+    // ===== Genre: Ambient =====
     Ambient,
     DarkAmbient,
     SpaceAmbient,
     AmbientNewAge,
 
-// ===== Genre: New Age =====
+    // ===== Genre: New Age =====
     NewAge,
     Meditation,
     Relaxation,
     Healing,
-
 }

@@ -16,8 +16,13 @@
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see <https://www.gnu.org/licenses/>.
 
-#![cfg_attr(not(feature = "std"), no_std)]
+mod wasm_api;
+mod wasm_api_generated;
 
-mod generated;
+pub use wasm_api::*;
 
-pub use generated::GenreId;
+/// Initialize WASM panic hook for better error messages
+#[wasm_bindgen::prelude::wasm_bindgen(start)]
+pub fn init() {
+    console_error_panic_hook::set_once();
+}
