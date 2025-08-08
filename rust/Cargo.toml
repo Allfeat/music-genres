@@ -1,6 +1,6 @@
 [package]
 name = "allfeat-music-genres"
-version = "0.2.7"
+version = "0.2.8"
 edition = "2024"
 description = "Flat genre enum for the Allfeat blockchain with frontend-backend compatibility"
 license = "GPL-3.0-or-later"
@@ -22,7 +22,7 @@ scale-info = { version = "2.11.6", default-features = false, features = [
 	"derive",
 ] }
 
-sp-runtime = { version = "43.0.0", default-features = false }
+sp-runtime = { version = "42.0.0", default-features = false }
 
 serde = { version = "1.0", features = ["derive"], default-features = false, optional = true }
 wasm-bindgen = { version = "0.2", optional = true }
