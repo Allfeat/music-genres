@@ -21,9 +21,8 @@ use parity_scale_codec::{Decode, DecodeWithMemTracking, Encode, MaxEncodedLen};
 use scale_info::TypeInfo;
 use sp_runtime::RuntimeDebug;
 
-#[cfg(feature = "serde")]
+#[cfg(feature = "js")]
 use serde::{Deserialize, Serialize};
-
 #[cfg(feature = "js")]
 use wasm_bindgen::prelude::*;
 
@@ -44,7 +43,7 @@ use wasm_bindgen::prelude::*;
     TypeInfo,
     MaxEncodedLen,
 )]
-#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
+#[cfg_attr(feature = "js", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "js", wasm_bindgen)]
 pub enum GenreId {
     // ===== Genre: Rock =====
